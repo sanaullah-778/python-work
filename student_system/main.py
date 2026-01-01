@@ -8,13 +8,31 @@ def calculate_grade(marks):
     else:
         return "F"
 
+
 print("Welcome to Student Result System")
 
-name = input("Enter student name: ")
-marks = int(input("Enter marks: "))
+added_students = set()
 
-grade = calculate_grade(marks)
+while True:
+    name = input("\nEnter student name (or type 'exit' to stop): ")
 
-print("Student:", name)
-print("Marks:", marks)
-print("Grade:", grade)
+    if name.lower() == "exit":
+        break
+
+    if name.lower() in added_students:
+        print("⚠️ Name already added")
+        continue
+
+    try:
+        marks = int(input("Enter marks: "))
+    except ValueError:
+        print("❌ Invalid marks. Please enter a number.")
+        continue
+
+    grade = calculate_grade(marks)
+    added_students.add(name.lower())
+
+    print("\n--- Result ---")
+    print("Student:", name)
+    print("Marks:", marks)
+    print("Grade:", grade)
