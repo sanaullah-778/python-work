@@ -1,1 +1,1 @@
-print("Python setup successful")
+print("Day 1: Git workflow learned")
